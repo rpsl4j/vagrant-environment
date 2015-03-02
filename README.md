@@ -1,4 +1,8 @@
 # opendaylight-dev-environment
+## requirements
+ + [vagrant](https://www.vagrantup.com/downloads.html)
+ + [virtualbox](https://www.virtualbox.org/wiki/Downloads)
+
 ## usage
 ```
 # clone the repo, git/ssh runs on port 2222
