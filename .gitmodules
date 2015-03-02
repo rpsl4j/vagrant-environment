@@ -1,0 +1,3 @@
+[submodule "controller"]
+	path = open-daylight/controller
+	url = https://github.com/opendaylight/controller.git
