@@ -23,11 +23,4 @@ file { "/home/vagrant/.m2":
     owner => "vagrant",
     group => "vagrant",
     mode => 0644
-} ~> exec { "controller-packages":
-    command => "/usr/bin/mvn clean",
-    cwd => "/open-daylight/controller",
-    user => "vagrant",
-    require => [File["/home/vagrant/.m2/settings.xml"], Class["maven::maven"]],
-    refreshonly => true,
-    timeout => 0
 }
