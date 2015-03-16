@@ -1,3 +1,90 @@
 [submodule "controller"]
 	path = open-daylight/controller
 	url = https://github.com/opendaylight/controller.git
+[submodule "aaa"]
+	path = open-daylight/aaa
+	url = https://github.com/opendaylight/aaa
+[submodule "affinity"]
+	path = open-daylight/affinity
+	url = https://github.com/opendaylight/affinity
+[submodule "bgpcep"]
+	path = open-daylight/bgpcep
+	url = https://github.com/opendaylight/bgpcep
+[submodule "defense4all"]
+	path = open-daylight/defense4all
+	url = https://github.com/opendaylight/defense4all
+[submodule "dlux"]
+	path = open-daylight/dlux
+	url = https://github.com/opendaylight/dlux
+[submodule "docs"]
+	path = open-daylight/docs
+	url = https://github.com/opendaylight/docs
+[submodule "groupbasedpolicy"]
+	path = open-daylight/groupbasedpolicy
+	url = https://github.com/opendaylight/groupbasedpolicy
+[submodule "integration"]
+	path = open-daylight/integration
+	url = https://github.com/opendaylight/integration
+[submodule "l2switch"]
+	path = open-daylight/l2switch
+	url = https://github.com/opendaylight/l2switch
+[submodule "lispflowmapping"]
+	path = open-daylight/lispflowmapping
+	url = https://github.com/opendaylight/lispflowmapping
+[submodule "odlparent"]
+	path = open-daylight/odlparent
+	url = https://github.com/opendaylight/odlparent
+[submodule "opendove"]
+	path = open-daylight/opendove
+	url = https://github.com/opendaylight/opendove
+[submodule "openflowjava"]
+	path = open-daylight/openflowjava
+	url = https://github.com/opendaylight/openflowjava
+[submodule "openflowplugin"]
+	path = open-daylight/openflowplugin
+	url = https://github.com/opendaylight/openflowplugin
+[submodule "opflex"]
+	path = open-daylight/opflex
+	url = https://github.com/opendaylight/opflex
+[submodule "ovsdb"]
+	path = open-daylight/ovsdb
+	url = https://github.com/opendaylight/ovsdb
+[submodule "packetcable"]
+	path = open-daylight/packetcable
+	url = https://github.com/opendaylight/packetcable
+[submodule "reservation"]
+	path = open-daylight/reservation
+	url = https://github.com/opendaylight/reservation
+[submodule "sdninterfaceapp"]
+	path = open-daylight/sdninterfaceapp
+	url = https://github.com/opendaylight/sdninterfaceapp
+[submodule "sfc"]
+	path = open-daylight/sfc
+	url = https://github.com/opendaylight/sfc
+[submodule "snbi"]
+	path = open-daylight/snbi
+	url = https://github.com/opendaylight/snbi
+[submodule "snmp4sdn"]
+	path = open-daylight/snmp4sdn
+	url = https://github.com/opendaylight/snmp4sdn
+[submodule "tcpmd5"]
+	path = open-daylight/tcpmd5
+	url = https://github.com/opendaylight/tcpmd5
+[submodule "toolkit"]
+	path = open-daylight/toolkit
+	url = https://github.com/opendaylight/toolkit
+[submodule "ttp"]
+	path = open-daylight/ttp
+	url = https://github.com/opendaylight/ttp
+[submodule "vtn"]
+	path = open-daylight/vtn
+	url = https://github.com/opendaylight/vtn
+[submodule "yangtools"]
+	path = open-daylight/yangtools
+	url = https://github.com/opendaylight/yangtools
+[submodule "releng/autorelease"]
+	path = open-daylight/releng/autorelease
+	url = https://github.com/opendaylight/releng-autorelease
+[submodule "releng/builder"]
+	path = open-daylight/releng/builder
+	url = https://github.com/opendaylight/releng-builder
