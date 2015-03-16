@@ -19,7 +19,11 @@ vagrant up
 # shell into your new development box!
 vagrant ssh
 
-# compile controller
+# compile open-daylight 
 cd /open-daylight
 ./build.sh
+
+# run open-daylight
+cd /open-daylight/integration/distributions/karaf/target/assembly
+bin/karaf
 ```
