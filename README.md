@@ -27,3 +27,9 @@ cd /open-daylight
 cd /open-daylight/integration/distributions/karaf/target/assembly
 bin/karaf
 ```
+# Bird and ODL BGP
+bird is installed during the provisioning phase and is configured using `puppet/modules/abncomp3500/files/bird.conf`.
+
+The VM has 2 private network interfaces for Bird and ODL. Bird binds to 172.31.0.1 (AS1) and assumes ODL will bind to 172.31.1.1 (AS2).
+
+Interact with bird using `service bird start/stop/restart/status` and the birdc command (from root or using sudo). Logs can be followed using `tail -f /var/log/messages | grep bird`.

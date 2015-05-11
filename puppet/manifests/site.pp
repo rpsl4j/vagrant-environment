@@ -24,3 +24,17 @@ file { "/home/vagrant/.m2":
     group => "vagrant",
     mode => 0644
 }
+
+package { "bird":
+    ensure => "installed",
+    provider => "rpm",
+    source => "http://service.bgroberts.id.au/bird-1.4.5-1.el6.x86_64.rpm",
+    notify => File["/etc/bird.conf"]
+}
+
+file { "/etc/bird.conf":
+    mode => 0644,
+    owner => "root",
+    group => "root",
+    source => "puppet:///modules/abn3500/bird.conf"
+}
