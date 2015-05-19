@@ -28,8 +28,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # using a specific IP.
   #
   # The first interface is used by Bird, the second can be used by ODL
-  config.vm.network :private_network, ip: "172.31.0.1"
-  config.vm.network :private_network, ip: "172.31.1.1"
+  config.vm.network :private_network, ip: "172.31.0.2"
+  config.vm.network :private_network, ip: "172.31.1.2"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
