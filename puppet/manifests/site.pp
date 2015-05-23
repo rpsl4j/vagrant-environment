@@ -38,3 +38,21 @@ file { "/etc/bird.conf":
     group => "root",
     source => "puppet:///modules/abn3500/bird.conf"
 }
+
+package { "opendaylight-helium":
+    ensure => "installed",
+    provider => "rpm",
+    source => "https://repo.cloudrouter.org/beta/x86_64/opendaylight-helium-3-0.noarch.rpm",
+    require => Package["openjdk-7"]
+}
+
+package { "epel-release":
+    ensure => "installed",
+    provider => "rpm",
+    source => "https://mirror.aarnet.edu.au/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm"
+}
+
+package { "tmux":
+    ensure => "installed",
+    require => Package["epel-release"]
+}
