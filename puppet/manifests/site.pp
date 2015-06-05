@@ -56,3 +56,10 @@ package { "tmux":
     ensure => "installed",
     require => Package["epel-release"]
 }
+
+file { "/home/vagrant/start-tmux.sh":
+    mode => 755,
+    owner => "vagrant",
+    group => "vagrant",
+    source => "puppet:///modules/abn3500/start-tmux.sh"
+}
