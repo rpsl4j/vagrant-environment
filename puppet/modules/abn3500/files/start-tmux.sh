@@ -8,7 +8,7 @@ else
     tmux rename-window 'README'
     tmux send-keys 'less /vagrant/README.md' 'C-m'
     tmux new-window
-    tmux send-keys 'sudo /opt/opendaylight/opendaylight-helium/bin/karaf' 'C-m'
+    tmux send-keys 'sudo /opt/opendaylight/bin/karaf' 'C-m'
     tmux rename-window 'opendaylight-karaf'
     tmux split-window -h 'exec sudo bash -c "while true; do netstat -pnl | grep java; sleep 1; clear; done"'
    tmux new-window 

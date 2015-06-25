@@ -39,10 +39,17 @@ file { "/etc/bird.conf":
     source => "puppet:///modules/abn3500/bird.conf"
 }
 
-package { "opendaylight-helium":
+/*package { "opendaylight-helium":
     ensure => "installed",
     provider => "rpm",
     source => "https://repo.cloudrouter.org/beta/x86_64/opendaylight-helium-3-0.noarch.rpm",
+    require => Package["openjdk-7"]
+}*/
+
+package { "opendaylight":
+    ensure => "installed",
+    provider => "rpm",
+    source => "http://service.bgroberts.id.au/opendaylight-0.3.0-0.noarch.rpm",
     require => Package["openjdk-7"]
 }
 
