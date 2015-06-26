@@ -3,6 +3,13 @@
  + [vagrant](https://www.vagrantup.com/downloads.html)
  + [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
+## quickstart
+```
+vagrant up
+vagrant ssh
+./start-tmux.sh
+```
+
 ## usage
 ```
 # clone the repo, git/ssh runs on port 2222
@@ -40,13 +47,13 @@ A copy of ODL Helium from the CloudRouter project is installed during provision 
 To bring up the karaf-console and enable the BGP module:
 
     1. execute `sudo /opt/opendaylight/opendaylight-helium/bin/karaf`
-    2. install the BGP feature in karaf: `feature:install odl-bgpcep-all` (see all features with `feature:list`)
+    2. install the BGP feature in karaf: `feature:install odl-bgpcep-bgp-all` (see all features with `feature:list`)
     3. install RESTConf: `feature:install odl-restconf-all` (will run on 8181, should be forwarded to host)
     4. Disable authentication (so we can use restconf etc):
         1. `config:edit org.opendaylight.aaa.authn`
         2. `config:property-set authEnabled false`
         3. `config:update`
-    4. edit the BGP configuration file as required (check `feature:info odl-bgpcep-all`
+    4. edit the BGP configuration file as required (check `feature:info odl-bgpcep-bgp-all`
     5. Exit (Ctrl+D) and repoen karaf for changes to take effect (`sudo netstat -pnl | grep BGP-PORT` should show java listening on the BGP port)
 
 
