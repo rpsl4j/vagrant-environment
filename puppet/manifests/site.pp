@@ -54,8 +54,8 @@ file { "/etc/quagga/bgpd.conf":
 
 service { "bgpd":
     name => "bgpd",
-    ensure => "running",
-    enable => "true"
+    ensure => "stopped",
+    enable => "false"
 }
 
 package { "opendaylight":

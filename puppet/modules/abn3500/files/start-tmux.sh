@@ -13,7 +13,7 @@ else
     tmux split-window -h 'exec sudo bash -c "while true; do netstat -pnl | grep java; sleep 1; clear; done"'
    tmux new-window 
     tmux rename-window 'bgpd'
-    tmux send-keys 'sudo service bgpd status'
+    tmux send-keys 'sudo bgpd -l 172.31.0.2 -f /etc/quagga/bgpd.conf'
     tmux split-window -h 'exec telnet localhost 2605'
     tmux send-keys 'password' 'C-m' 'enable' 'C-m' 'show bgp neighbors' 'C-m'
     tmux new-window
