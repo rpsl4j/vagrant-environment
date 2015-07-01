@@ -41,7 +41,7 @@ file { "/etc/bird.conf":
 
 package { "quagga":
     ensure => "installed",
-    notify => File["/etc/quagga/bgpd.conf"]
+    notify => [File["/etc/quagga/bgpd.conf"], File["/etc/sysconfig/quagga"]]
 }
 
 file { "/etc/quagga/bgpd.conf":
@@ -52,10 +52,18 @@ file { "/etc/quagga/bgpd.conf":
     notify => Service["bgpd"]
 }
 
+file { "/etc/sysconfig/quagga":
+    mode => 0644,
+    owner => "root",
+    group => "root",
+    source => "puppet:///modules/abn3500/sysconfig-quagga",
+    notify => Service["bgpd"]
+}
+
 service { "bgpd":
     name => "bgpd",
-    ensure => "stopped",
-    enable => "false"
+    ensure => "running",
+    enable => "true"
 }
 
 package { "opendaylight":

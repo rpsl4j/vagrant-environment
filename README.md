@@ -39,7 +39,7 @@ bpgd is installed during the provisioning phase and is configured using `puppet/
 
 The VM has 2 private network interfaces for bgpd and ODL. bgpd binds to 172.31.0.2(AS1) and assumes ODL will bind to 172.31.1.2 (AS2).
 
-Interact with bgpd using `sudo bgpd -l 172.31.0.2 -f /etc/quagga/bgpd.conf` and via bgpd's vtysh (`telnet localhost 2605`). The default password is `password`.
+Interact with bgpd using `sudo service bgpd start/stop/status/restart` and via bgpd's vtysh (`telnet localhost 2605`). The default password is `password`.
 
 # Pre-installed ODL
 A copy of ODL Helium from the CloudRouter project is installed during provision and can be found at `/opt/opendaylight/opendaylight-helium`.
