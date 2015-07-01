@@ -34,12 +34,12 @@ cd /open-daylight
 cd /open-daylight/integration/distributions/karaf/target/assembly
 bin/karaf
 ```
-# Bird and ODL BGP
-bird is installed during the provisioning phase and is configured using `puppet/modules/abncomp3500/files/bird.conf`.
+# bpgd and ODL BGP
+bpgd is installed during the provisioning phase and is configured using `puppet/modules/abncomp3500/files/bgpd.conf`.
 
-The VM has 2 private network interfaces for Bird and ODL. Bird binds to 172.31.0.R2(AS1) and assumes ODL will bind to 172.31.1.2 (AS2).
+The VM has 2 private network interfaces for bgpd and ODL. bgpd binds to 172.31.0.2(AS1) and assumes ODL will bind to 172.31.1.2 (AS2).
 
-Interact with bird using `service bird start/stop/restart/status` and the birdc command (from root or using sudo). Logs can be followed using `tail -f /var/log/messages | grep bird`.
+Interact with bgpd using `service bgpd start/stop/restart/status` and via bgpd's vtysh (`telnet localhost 2605`). The default password is `password`.
 
 # Pre-installed ODL
 A copy of ODL Helium from the CloudRouter project is installed during provision and can be found at `/opt/opendaylight/opendaylight-helium`.
