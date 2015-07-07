@@ -26,10 +26,10 @@ file { "/home/vagrant/.m2":
 }
 
 package { "bird":
-    ensure => "installed",
+    ensure => "absent",
     provider => "rpm",
     source => "http://service.bgroberts.id.au/bird-1.4.5-1.el6.x86_64.rpm",
-    notify => File["/etc/bird.conf"]
+    notify => Package["quagga"]
 }
 
 file { "/etc/bird.conf":
@@ -37,6 +37,33 @@ file { "/etc/bird.conf":
     owner => "root",
     group => "root",
     source => "puppet:///modules/abn3500/bird.conf"
+}
+
+package { "quagga":
+    ensure => "installed",
+    notify => [File["/etc/quagga/bgpd.conf"], File["/etc/sysconfig/quagga"]]
+}
+
+file { "/etc/quagga/bgpd.conf":
+    mode => 0644,
+    owner => "root",
+    group => "root",
+    source => "puppet:///modules/abn3500/bgpd.conf",
+    notify => Service["bgpd"]
+}
+
+file { "/etc/sysconfig/quagga":
+    mode => 0644,
+    owner => "root",
+    group => "root",
+    source => "puppet:///modules/abn3500/sysconfig-quagga",
+    notify => Service["bgpd"]
+}
+
+service { "bgpd":
+    name => "bgpd",
+    ensure => "running",
+    enable => "true"
 }
 
 package { "opendaylight":
@@ -55,6 +82,10 @@ package { "epel-release":
 package { "tmux":
     ensure => "installed",
     require => Package["epel-release"]
+}
+
+package { "telnet":
+    ensure => "present"
 }
 
 file { "/home/vagrant/start-tmux.sh":

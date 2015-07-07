@@ -12,9 +12,10 @@ else
     tmux rename-window 'opendaylight-karaf'
     tmux split-window -h 'exec sudo bash -c "while true; do netstat -pnl | grep java; sleep 1; clear; done"'
    tmux new-window 
-    tmux rename-window 'bird'
-    tmux send-keys 'sudo service bird start'
-    tmux split-window -h 'exec sudo bash -c "while true; do birdcl show protocols all bgp1; sleep 1; clear; done"'
+    tmux rename-window 'bgpd'
+    tmux send-keys 'sudo service bgpd status' 'C-m'
+    tmux split-window -h 'exec telnet localhost 2605'
+    tmux send-keys 'password' 'C-m' 'enable' 'C-m' 'show bgp neighbors 172.31.0.2' 'C-m' 'show ip bgp ipv4 unicast' 'C-m'
     tmux new-window
     tmux rename-window 'opendaylight-config'
     tmux send-keys 'cd /opt/opendaylight/etc/opendaylight/karaf' 'C-m' 'sudo vim '
