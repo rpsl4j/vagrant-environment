@@ -16,7 +16,7 @@ vagrant ssh
 git clone git@gitlab.cecs.anu.edu.au:abn-comp3100/vagrant-repo.git
 cd vagrant-repo
 
-# download the opendaylight controller repo
+# download the opendaylight repos (if you want to compile)
 git submodule init
 git submodule update
 
@@ -33,6 +33,10 @@ cd /open-daylight
 # run open-daylight
 cd /open-daylight/integration/distributions/karaf/target/assembly
 bin/karaf
+
+# run preinstalled open-daylight/bgpd
+cd ~
+./start-tmux.sh
 ```
 # bpgd and ODL BGP
 bpgd is installed during the provisioning phase and is configured using `puppet/modules/abncomp3500/files/bgpd.conf`.

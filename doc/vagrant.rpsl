@@ -1,5 +1,5 @@
 aut-num: AS2
-as-name: ODL AS
+as-name: ODL-AS
 export: to AS1 172.31.0.2 at 172.31.1.2 announce 0.0.0.0/0
 
 inet-rtr: vagrant1
