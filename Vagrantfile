@@ -10,14 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "centos-65-x64-puppet-odl"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "https://service.bgroberts.id.au/centos-65-x64-virtualbox-puppet-odl.box"
-  config.vm.box_download_insecure = true
-  config.vm.box_download_checksum = "854991ebd40c5f0e3f4af8ddf692b346718aa476e903f5f4abd41ec7f37fbe95"
-  config.vm.box_download_checksum_type = "sha256"
+  config.vm.box = "puppetlabs/centos-6.6-64-puppet"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
