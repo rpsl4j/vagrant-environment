@@ -94,3 +94,14 @@ file { "/home/vagrant/start-tmux.sh":
     group => "vagrant",
     source => "puppet:///modules/abn3500/start-tmux.sh"
 }
+
+package { "readline":
+    ensure => "present",
+}
+
+package { "irrtoolset":
+    ensure => "installed",
+    provider => "rpm",
+    source => "http://service.bgroberts.id.au/irrtoolset-a86c5f59bd15280dde0114bb6523ce96563da075-1.el6.x86_64.rpm",
+    require => Package["readline"],
+}

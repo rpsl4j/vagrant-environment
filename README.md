@@ -3,6 +3,12 @@
  + [vagrant](https://www.vagrantup.com/downloads.html)
  + [virtualbox](https://www.virtualbox.org/wiki/Downloads)
 
+## included software:
+ + opendaylight-lithium
+ + quagga (bgpd)
+ + irrtoolset
+ + tmux
+
 ## quickstart
 ```
 vagrant up
