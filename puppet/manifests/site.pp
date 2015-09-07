@@ -105,3 +105,15 @@ package { "irrtoolset":
     source => "http://service.bgroberts.id.au/irrtoolset-a86c5f59bd15280dde0114bb6523ce96563da075-1.el6.x86_64.rpm",
     require => Package["readline"],
 }
+
+package { "rpm-build":
+    ensure => "installed"
+}
+
+package { "rpmdevtools":
+    ensure => "installed"
+}
+
+package { "java-1.7.0-openjdk-devel":
+    ensure => "installed"
+}
