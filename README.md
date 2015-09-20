@@ -1,69 +1,55 @@
-# opendaylight-dev-environment
-## requirements
- + [vagrant](https://www.vagrantup.com/downloads.html)
- + [virtualbox](https://www.virtualbox.org/wiki/Downloads)
+# rpsl4j-vagrant-environment
+A virtualised environment for packaging rpsl4j and testing/developing against OpenDaylight Lithium and Quagga bgpd.
 
-## included software:
- + opendaylight-lithium
- + quagga (bgpd)
+The environment is built on a VirtualBox backed CentOS 6.6 Vagrant box and is configured using Puppet.
+
+## Requirements
+ + [Vagrant](https://www.vagrantup.com/downloads.html)
+ + [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+
+
+## Quickstart
+```bash
+vagrant up
+vagrant ssh
+~/start-tmux.sh
+```
+This will start up a new `tmux` session running Opendaylight and bgpd. The VM has 2 private network interfaces, one for bgpd and the other for OpenDaylight. bgpd listens on 172.31.0.2 as AS1 and will attempt to connect to OpenDaylight on 172.31.1.2 as AS2.
+
+## Configuring OpenDaylight Lithium
+OpenDaylight Lithium  is installed during the provision process and can be started by executing `~/start-tmux.sh` or `sudo /opt/opendaylight/bin/karaf`
+
+To enable the BGP and RESTconf modules:
+
+   1. Start OpenDaylight by starting the karaf console (see above)
+   2. Install the BGP feature by executing  `feature:install odl-bgpcep-bgp-all` in the karaf console. _(to view all available features, execute_ `feature:list`_)_
+   3. Install the RESTconf feature by executing `feature:install odl-restconf-all`. RESTconf will listen on port 8181 and will be forwarded to the same port on the host by VirtualBox.
+   4. __(OPTIONAL)__ Disable authentication for RESTconf by executing the following:
+       1. `config:edit org.opendaylight.aaa.authn`
+       2. `config:property-set authEnabled false`
+       3. `config:update`
+   4. Configure the BGP modile by editing the required configuration files. These can be enumerated by executing `feature:info odl-bgpcep-bgp-all`.
+       * Refer to the _rpsl4j-opendaylight_ documentation for instructions on generating a BGP configuration. A sample RPSL document for the environment is [provided](docs/vagrant.rpsl).
+   5. Exit the karaf console (Ctrl+D) and reopen for changes to take effect.
+       * You should be able to see RESTconf and the BGP module listening by executing `sudo netstat -pnl | grep "8181\|BGP-PORT"`.
+
+## Quagga bgpd Configuration
+bpgd is installed during the provisioning phase and using a [configuration file](puppet/modules/abncomp3500/files/bgpd.conf) installed by Puppet.
+
+The bgpd service can be manipulated using the `service` as follows:
+`sudo service bgpd start/stop/restart/status`
+
+Once running you can connect to the command interface (`$ telnet localhost 2605`) using the password: "password":
+
+
+## Included Software:
+ + OpenDaylight Lithium
+ + Quagga bgpd
  + irrtoolset
+ + rpmbuild and rpmdevtools
+ + Maven
+ + Java 1.7 JDK
  + tmux
 
-## quickstart
-```
-vagrant up
-vagrant ssh
-./start-tmux.sh
-```
-
-## usage
-```
-# clone the repo, git/ssh runs on port 2222
-git clone git@gitlab.cecs.anu.edu.au:abn-comp3100/vagrant-repo.git
-cd vagrant-repo
-
-# download the opendaylight repos (if you want to compile)
-git submodule init
-git submodule update
-
-# bring up the dev environment
-vagrant up
-
-# shell into your new development box!
-vagrant ssh
-
-# compile open-daylight 
-cd /open-daylight
-./build.sh
-
-# run open-daylight
-cd /open-daylight/integration/distributions/karaf/target/assembly
-bin/karaf
-
-# run preinstalled open-daylight/bgpd
-cd ~
-./start-tmux.sh
-```
-# bpgd and ODL BGP
-bpgd is installed during the provisioning phase and is configured using `puppet/modules/abncomp3500/files/bgpd.conf`.
-
-The VM has 2 private network interfaces for bgpd and ODL. bgpd binds to 172.31.0.2(AS1) and assumes ODL will bind to 172.31.1.2 (AS2).
-
-Interact with bgpd using `sudo service bgpd start/stop/status/restart` and via bgpd's vtysh (`telnet localhost 2605`). The default password is `password`.
-
-# Pre-installed ODL
-A copy of ODL Helium from the CloudRouter project is installed during provision and can be found at `/opt/opendaylight/opendaylight-helium`.
-
-To bring up the karaf-console and enable the BGP module:
-
-    1. execute `sudo /opt/opendaylight/opendaylight-helium/bin/karaf`
-    2. install the BGP feature in karaf: `feature:install odl-bgpcep-bgp-all` (see all features with `feature:list`)
-    3. install RESTConf: `feature:install odl-restconf-all` (will run on 8181, should be forwarded to host)
-    4. Disable authentication (so we can use restconf etc):
-        1. `config:edit org.opendaylight.aaa.authn`
-        2. `config:property-set authEnabled false`
-        3. `config:update`
-    4. edit the BGP configuration file as required (check `feature:info odl-bgpcep-bgp-all`
-    5. Exit (Ctrl+D) and repoen karaf for changes to take effect (`sudo netstat -pnl | grep BGP-PORT` should show java listening on the BGP port)
-
-
+## License
+Original content in this repository is licensed under the GNU Affero General Public License.
