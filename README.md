@@ -28,7 +28,7 @@ To enable the BGP and RESTconf modules:
        1. `config:edit org.opendaylight.aaa.authn`
        2. `config:property-set authEnabled false`
        3. `config:update`
-   4. Configure the BGP modile by editing the required configuration files. These can be enumerated by executing `feature:info odl-bgpcep-bgp-all`.
+   4. Configure the BGP module by editing the required configuration files. These can be enumerated by executing `feature:info odl-bgpcep-bgp-all`.
        * Refer to the _rpsl4j-opendaylight_ documentation for instructions on generating a BGP configuration. A sample RPSL document for the environment is [provided](docs/vagrant.rpsl).
    5. Exit the karaf console (Ctrl+D) and reopen for changes to take effect.
        * You should be able to see RESTconf and the BGP module listening by executing `sudo netstat -pnl | grep "8181\|BGP-PORT"`.

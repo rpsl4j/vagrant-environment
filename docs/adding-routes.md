@@ -1,5 +1,5 @@
 # Adding routes to a RIB in OpenDaylight Lithium
-This guide roughly describes the process of adding routes to OpenDaylight Lithium's BGP speaker implementation via the RESTConf interface. This assumes that the OpenDaylight's BGP and RESTconf modules have been appropriately configured as described in the readme.
+This guide roughly describes the process of adding routes to OpenDaylight Lithium's BGP speaker implementation via the RESTConf interface. This assumes that OpenDaylight's BGP and RESTconf modules have been appropriately configured as described in the readme.
 
 _please note the {{parameters}} in API URLs_  
 
@@ -25,7 +25,7 @@ __URL__:` http://127.0.0.1:8181/restconf/config/network-topology:network-topolog
 You cannot directly add routes to a BGP Peer's RIB ([source]( https://wiki.opendaylight.org/view/BGP_LS_PCEP:Restconf#Route_Information_Base_.28RIB.29)) as they do not support any sort of POST action. You must configure an Application Peer targeting the peers RIB and POST routes via it.
 
 ### Application Peers
-An application peer emulates the behavior of a remote BGP speaker peering with OpenDaylight. They are used by adding routes to them which are then "peered" with the actual OpenDaylight BGP speaker instance. Any route added to the RIB of an application peer will be "copied" to the configured target RIB. Read more at the OpenDayight [wiki](https://wiki.opendaylight.org/view/BGP_LS_PCEP:Programmer_Guide#Inserting_routes).
+An application peer emulates the behavior of a remote BGP speaker peering with OpenDaylight. They are used by adding routes to them which are then "peered" with the actual OpenDaylight BGP speaker instance. Any route added to the RIB of an application peer will be "copied" to the configured target RIB, and subsequently peered to the speakers real peers. Read more at the OpenDayight [wiki](https://wiki.opendaylight.org/view/BGP_LS_PCEP:Programmer_Guide#Inserting_routes).
 
 ### Set the routes of an Application RIB table
 Used to initially populate the RIB table
